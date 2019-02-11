@@ -138,7 +138,7 @@ module FormBuilder
         elsif safe_collection["options"].is_a?(String)
           collection_options = safe_collection["options"].as(String)
         else
-          raise ArgumentError.new("Invalid argument type passed to `collection[:options]`, must be an Array`")
+          raise ArgumentError.new("Invalid argument type passed to `collection[:options]`")
         end
 
         if collection_options.is_a?(String)

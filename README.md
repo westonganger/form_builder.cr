@@ -6,10 +6,6 @@
 
 Dead simple HTML form builder for Crystal with built-in support for many popular UI libraries such as Bootstrap. Works well with your favourite Crystal web framework such as Kemal, Amber, or Lucky.
 
-# TODO
-
-- Complete all missing specs
-
 # Features
 
 - Easily generate HTML markup for forms, labels, inputs, help text and errors
@@ -121,14 +117,15 @@ The following field types are supported:
   .row.select-example
     ### -- Additional Options for `type: :select`
     ### collection : (Hash | NamedTuple) = {
-    ###   options : (Array(Array) | Array | String) ### Required, Note: String type is for passing in a pre-built html options string
-    ###   selected : (String | Array)?
-    ###   disabled : (String | Array)?
+    ###   options : (Array(String) | Array(String | Array(String)) | String) ### Required, Note: The non-Array String type is for passing in a pre-built html options string
+    ###   selected : (String | Array(String))?
+    ###   disabled : (String | Array(String))?
+    ###   include_blank : (String | Bool)?
     ### }
     ### -- Note: String keys will take precedence over any Symbol keys
 
-    ### -- When passing Array(Array) to collection[:options] the Option pairs are defined as: [required_value, optional_label]
-    - opts = [["A", "Type A"], ["B" "Type B"], ["C", "Type C"]]
+    ### -- When passing a nested array to collection[:options] the Option pairs are defined as: [required_value, optional_label]
+    - opts = [["A", "Type A"], ["B" "Type B"], ["C", "Type C"], "Other"]
 
     == f.field name: "product[type]", label: "Type", type: :select, collection: {options: opts, selected: ["B"], disabled: ["C"]}
 ```
@@ -280,15 +277,21 @@ We use Ameba and Crystal Spec. To run all of these execute the following script:
 ./bin/form_builder_spec
 ```
 
+# Ruby Alternative
+
+This library has been ported to the Ruby language as [SexyForm.rb](https://github.com/westonganger/sexy_form.rb)
+
+The reasoning for this is that the pattern/implementation of this form builder library turned out so beautifully. Also since many Crystal developers also write Ruby this only made sense. What was awesome is that, the Ruby and Crystal syntax is so similar that converting Crystal code to Ruby was quite simple. However I do believe that translating Ruby code to Crystal would prove to be much more difficult.
+
 # Credits
 
 Created & Maintained by [Weston Ganger](https://westonganger.com) - [@westonganger](https://github.com/westonganger)
 
-Project Inspired By:
-
-- [Jasper Helpers](https://github.com/amberframework/jasper-helpers) used within the [Amber framework](https://github.com/amberframework/amber)
-- [SimpleForm](https://github.com/plataformatec/simple_form)
-
 For any consulting or contract work please contact me via my company website: [Solid Foundation Web Development](https://solidfoundationwebdev.com)
 
 [![Solid Foundation Web Development Logo](https://solidfoundationwebdev.com/logo-sm.png)](https://solidfoundationwebdev.com)
+
+Project Inspired By:
+
+- [SimpleForm](https://github.com/plataformatec/simple_form)
+- [Jasper Helpers](https://github.com/amberframework/jasper-helpers) used within the [Amber framework](https://github.com/amberframework/amber)
