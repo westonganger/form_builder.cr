@@ -74,11 +74,9 @@ The following field types are supported:
 - `:text`
 - `:textarea`
 
-## FormBuilder in View Templates (Kilt, Slang, ECR, etc.)
+## FormBuilder in View Templates (Example in Slang)
 
 ```crystal
-
-
 == FormBuilder.form(theme: :bootstrap_4_vertical, action: "/products", method: :post, form_html: {style: "margin-top: 20px;", "data-foo" => "bar"}) do |f|
   .row.main-examples
     .col-sm-6
@@ -175,7 +173,15 @@ The form builder is capable of handling error messages too. If the `:errors` arg
 
 ## Custom Themes
 
-If you need to create a custom theme simply create an initializer with the following:
+FormBuilder allows you to create custom themes very easily.
+
+Example Usage:
+
+```ruby
+FormBuilder.form(theme: :custom)
+```
+
+Example Theme Class:
 
 ```crystal
 # config/initializers/form_builder.cr
@@ -214,6 +220,10 @@ module FormBuilder
           
           s << html_help_text
 
+          if html_errors
+            s << html_errors.join
+          end
+
           s << "</div>"
         end
       end
@@ -221,14 +231,17 @@ module FormBuilder
       def input_html_attributes(html_attrs : Hash(String, String), field_type : String, has_errors? : Bool)
         html_attrs["class"] = "form-field other-class #{html_attrs["class"]?}".strip
         html_attrs["style"] = "color: blue; #{html_attrs["style"]?}".strip
-        html_attrs["data-foo"] = "bar #{html_attrs["class"]?}"
+          
+        unless html_attrs.has_key?("data-foo")
+          html_attrs["data-foo"] = "bar #{html_attrs["class"]?}"
+        end
+        
         html_attrs
       end
 
       def label_html_attributes(html_attrs : Hash(String, String), field_type : String, has_errors? : Bool)
         html_attrs["class"] = "form-label other-class #{html_attrs["class"]?}".strip
         html_attrs["style"] = "color: red; #{html_attrs["style"]?}".strip
-        html_attrs["data-foo"] = "bar #{html_attrs["class"]?}"
         html_attrs
       end
 
@@ -281,7 +294,7 @@ We use Ameba and Crystal Spec. To run all of these execute the following script:
 
 This library has been ported to the Ruby language as [SexyForm.rb](https://github.com/westonganger/sexy_form.rb)
 
-The reasoning for this is that the pattern/implementation of this form builder library turned out so beautifully. Also since many Crystal developers also write Ruby this only made sense. What was awesome is that, the Ruby and Crystal syntax is so similar that converting Crystal code to Ruby was quite simple. However I do believe that translating Ruby code to Crystal would prove to be much more difficult.
+The pattern/implementation of this form builder library turned out so beautifully that I felt the desire to have the same syntax available in the Ruby language. Many Crystal developers also write Ruby and vice versa so this only made sense. What was awesome is that, the Crystal and Ruby syntax is so similar that converting Crystal code to Ruby was straight forward and quite simple.
 
 # Credits
 
