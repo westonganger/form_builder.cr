@@ -6,12 +6,12 @@ module FormBuilder
     private INPUT_TYPES = {"checkbox", "file", "hidden", "password", "radio", "text"}
     private COLLECTION_KEYS = {"options", "selected", "disabled", "include_blank"}
 
-    @theme : FormBuilder::Themes
+    @theme : FormBuilder::Themes::BaseTheme
     @html : Array(String) = [] of String
 
-    def initialize(theme : (String | Symbol | FormBuilder::Themes)? = nil)
+    def initialize(theme : (String | Symbol | FormBuilder::Themes::BaseTheme)? = nil)
       if theme
-        if theme.is_a?(FormBuilder::Themes)
+        if theme.is_a?(FormBuilder::Themes::BaseTheme)
           @theme = theme
         else
           @theme = Themes.from_name(theme.to_s).new

@@ -181,8 +181,8 @@ If you need to create a custom theme simply create an initializer with the follo
 # config/initializers/form_builder.cr
 
 module FormBuilder
-  class Themes
-    class Custom < Themes
+  module Themes
+    class Custom < BaseTheme
 
       ### (Optional) If your theme name doesnt perfectly match the `.underscore` of the theme class name
       def self.theme_name

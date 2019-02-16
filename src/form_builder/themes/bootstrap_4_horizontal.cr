@@ -1,6 +1,6 @@
 module FormBuilder
-  class Themes
-    class Bootstrap4Horizontal < Themes
+  module Themes
+    class Bootstrap4Horizontal < BaseTheme
 
       def self.theme_name
         "bootstrap_4_horizontal"
