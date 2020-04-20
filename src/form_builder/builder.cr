@@ -191,6 +191,8 @@ module FormBuilder
           s << themed_input_html["value"]?
           s << "</textarea>"
         end
+      else
+        # do nothing, for compiler
       end
 
       if label != false

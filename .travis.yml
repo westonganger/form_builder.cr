@@ -1,5 +1,8 @@
 language: crystal
 
 script:
-  - bin/ameba
-  - crystal spec
+  - bin/form_builder_spec
+
+notifications:
+  on_success: never
+  on_failure: always
