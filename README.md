@@ -284,10 +284,10 @@ FormBuilder.form(theme: :custom)
 
 # Contributing
 
-We use Ameba and Crystal Spec. To run all of these execute the following script:
+To run the test suite:
 
 ```
-./bin/form_builder_spec
+crystal spec
 ```
 
 # Ruby Alternative

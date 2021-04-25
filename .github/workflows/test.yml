@@ -41,5 +41,4 @@ jobs:
         run: SHARDS_OVERRIDE=${{ matrix.shard_file }} shards install --ignore-crystal-version
 
       - name: Run tests
-        #run: crystal spec
-        run: ./bin/form_builder_spec
+        run: crystal spec

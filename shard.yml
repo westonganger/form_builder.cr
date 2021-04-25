@@ -10,7 +10,7 @@ crystal: ">=0.36.1, < 2.0.0"
 
 license: MIT
 
-development_dependencies:
-  ameba:
-    github: veelenga/ameba
-    version: ~> 0.14.2
+# development_dependencies:
+#   ameba:
+#     github: veelenga/ameba
+#     version: ~> 0.14.2
