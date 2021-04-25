@@ -6,11 +6,11 @@ authors:
 
 description: Dead simple HTML form builder for Crystal with built-in support for many popular UI libraries such as Bootstrap
 
-crystal: 0.35.0
+crystal: ">=0.36.1, < 2.0.0"
 
 license: MIT
 
 development_dependencies:
   ameba:
     github: veelenga/ameba
-    version: ~> 0.12.1
+    version: ~> 0.14.2
