@@ -18,27 +18,25 @@ jobs:
         crystal_version:
           - 0.36.1
           - 1.0.0
-        experimental:
-          - false
+          - 1.1.0
+          - 1.2.0
         include:
           - shard_file: shard.yml
-            crystal_version: nightly
-            experimental: true
+            crystal_version: latest
+            ignore_errors: true
 
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.experimental }}
-    container: crystallang/crystal:${{ matrix.crystal_version }}-alpine
+    continue-on-error: ${{ matrix.ignore_errors || false }}
+    container: crystallang/crystal:${{ matrix.crystal_version }}
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Download source
+        uses: actions/checkout@v2
 
-      - name: Cache Crystal
-        uses: actions/cache@v1
+      - name: Install Crystal
+        uses: crystal-lang/install-crystal@v1
         with:
-          path: ~/.cache/crystal
-          key: ${{ runner.os }}-crystal
-
-      - name: Install shards
-        run: SHARDS_OVERRIDE=${{ matrix.shard_file }} shards install --ignore-crystal-version
+          crystal: ${{ matrix.crystal_version }}
 
       - name: Run tests
         run: crystal spec

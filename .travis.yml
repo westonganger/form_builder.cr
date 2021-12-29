@@ -1,9 +1,0 @@
-language: crystal
-
-script:
-  - bin/form_builder_spec
-
-notifications:
-  email:
-    on_success: never
-    on_failure: always
