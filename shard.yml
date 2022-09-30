@@ -6,7 +6,7 @@ authors:
 
 description: Dead simple HTML form builder for Crystal with built-in support for many popular UI libraries such as Bootstrap
 
-crystal: ">=0.36.1, < 2.0.0"
+crystal: ">=0.36.1"
 
 license: MIT
 
