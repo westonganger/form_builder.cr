@@ -30,14 +30,12 @@ describe FormBuilder::Builder do
   end
 
   describe "#field" do
-    it "does not allow incorrect types" do
-      expect_raises(ArgumentError) do
-        builder.field(type: "submit", name: :foobar)
-      end
+    it "allows any arbitrary input type" do
+      builder.field(type: "submit", name: :foobar)
     end
 
     describe "input fields" do
-      INPUT_TYPES.each do |field_type|
+      (TESTED_FIELD_TYPES.to_a - NON_INPUT_TYPES.to_a).each do |field_type|
 
         it "works for type: #{field_type}" do
           expected = "<div><input type=\"#{field_type}\" foo=\"bar\" name=\"my-great-text-input\" id=\"my-great-text-input\"></div>"
