@@ -2,8 +2,7 @@ module FormBuilder
   class Builder
     alias CollectionHash = Hash(String, (String | Symbol | Bool | Array(String) | Array(Array(String)) | Array(String | Array(String)) | Nil))
 
-    private FIELD_TYPES = {"checkbox", "file", "hidden", "password", "radio", "select", "text", "textarea"}
-    private INPUT_TYPES = {"checkbox", "file", "hidden", "password", "radio", "text"}
+    private NON_INPUT_TYPES = {"select", "textarea"}
     private COLLECTION_KEYS = {"options", "selected", "disabled", "include_blank"}
 
     @theme : FormBuilder::Themes::BaseTheme
@@ -46,10 +45,6 @@ module FormBuilder
     )
       type_str = type.to_s
 
-      unless FIELD_TYPES.includes?(type_str)
-        raise ArgumentError.new("Invalid :type argument, valid field types are: #{FIELD_TYPES.join(", ")}`")
-      end
-
       if collection && type_str != "select"
         raise ArgumentError.new("Argument :collection is not supported for type: :#{type_str}")
       end
@@ -84,7 +79,7 @@ module FormBuilder
         end
       end
 
-      if !themed_input_html["value"]? && value && !value.to_s.empty? && INPUT_TYPES.includes?(type_str)
+      if !themed_input_html["value"]? && value && !value.to_s.empty? && !NON_INPUT_TYPES.includes?(type_str)
         themed_input_html["value"] = value
       end
 
@@ -191,6 +186,8 @@ module FormBuilder
           s << themed_input_html["value"]?
           s << "</textarea>"
         end
+      else
+        html_field = input_field(type: type_str, attrs: themed_input_html)
       end
 
       if label != false
@@ -224,10 +221,6 @@ module FormBuilder
     end
 
     private def input_field(type : String, attrs : StringHash? = StringHash.new)
-      unless INPUT_TYPES.includes?(type.to_s)
-        raise ArgumentError.new("Invalid input :type, valid input types are `#{INPUT_TYPES.join(", ")}`")
-      end
-
       attrs.delete("type")
 
       boolean_opts = {"disabled"}
