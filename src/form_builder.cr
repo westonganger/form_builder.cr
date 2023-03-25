@@ -53,7 +53,12 @@ module FormBuilder
   end
 
   protected def self.build_html_attr_string(h : Hash)
-    h.map{|k, v| "#{k}=\"#{v}\""}.join(" ")
+    h.reject{|_,v| v.nil? || v.to_s.strip.empty? }.map{|k, v| "#{k}=\"#{v.to_s.strip}\""}.join(" ")
+  end
+
+  def self.build_html_element(type : (String|Symbol), h : Hash)
+    attr_str = build_html_attr_string(h)
+    attr_str.empty? ? "<#{type}>" : "<#{type} #{attr_str}>"
   end
 
   protected def self.safe_string_hash(h : Hash)

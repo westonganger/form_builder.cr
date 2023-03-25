@@ -4,6 +4,7 @@ CHANGELOG
 - **UNRELEASED**
   - [View Diff](https://github.com/westonganger/form_builder.cr/compare/v1.0.1...master)
   - [#4](https://github.com/westonganger/form_builder.cr/pulls/4) - Remove validations on field `:type` option
+  - [#6](https://github.com/westonganger/form_builder.cr/pulls/6) - Add bootstrap 5 themes
 
 - **1.0.1** - Apr 24, 2021
   - [View Diff](https://github.com/westonganger/form_builder.cr/compare/v1.0.0...v1.0.1)
