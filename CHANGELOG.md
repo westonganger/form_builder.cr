@@ -2,7 +2,11 @@ CHANGELOG
 ---------
 
 - **UNRELEASED**
-  - [View Diff](https://github.com/westonganger/form_builder.cr/compare/v1.0.1...master)
+  - [View Diff](https://github.com/westonganger/form_builder.cr/compare/v1.0.2...master)
+  - Nothing yet
+
+- **1.0.2** - Nov 18, 2023
+  - [View Diff](https://github.com/westonganger/form_builder.cr/compare/v1.0.1...v1.0.2)
   - [#4](https://github.com/westonganger/form_builder.cr/pulls/4) - Remove validations on field `:type` option
 
 - **1.0.1** - Apr 24, 2021
