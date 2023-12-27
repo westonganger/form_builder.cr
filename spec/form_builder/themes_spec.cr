@@ -6,11 +6,11 @@ describe FormBuilder::Themes do
 
   describe ".classes" do
     it "Comes with default themes" do
-      classes = [FormBuilder::Themes::Bootstrap2Horizontal, FormBuilder::Themes::Bootstrap2Inline, FormBuilder::Themes::Bootstrap2Vertical, FormBuilder::Themes::Bootstrap3Horizontal, FormBuilder::Themes::Bootstrap3Inline, FormBuilder::Themes::Bootstrap3Vertical, FormBuilder::Themes::Bootstrap4Horizontal, FormBuilder::Themes::Bootstrap4Inline, FormBuilder::Themes::Bootstrap4Vertical, FormBuilder::Themes::BulmaHorizontal, FormBuilder::Themes::BulmaVertical, FormBuilder::Themes::Default, FormBuilder::Themes::Foundation, FormBuilder::Themes::Materialize, FormBuilder::Themes::Milligram, FormBuilder::Themes::SemanticUIInline, FormBuilder::Themes::SemanticUIVertical]
+      classes = [FormBuilder::Themes::Bootstrap2Horizontal, FormBuilder::Themes::Bootstrap2Inline, FormBuilder::Themes::Bootstrap2Vertical, FormBuilder::Themes::Bootstrap3Horizontal, FormBuilder::Themes::Bootstrap3Inline, FormBuilder::Themes::Bootstrap3Vertical, FormBuilder::Themes::Bootstrap4Horizontal, FormBuilder::Themes::Bootstrap4Inline, FormBuilder::Themes::Bootstrap4Vertical, FormBuilder::Themes::Bootstrap5Horizontal, FormBuilder::Themes::Bootstrap5Inline, FormBuilder::Themes::Bootstrap5Vertical, FormBuilder::Themes::BulmaHorizontal, FormBuilder::Themes::BulmaVertical, FormBuilder::Themes::Default, FormBuilder::Themes::Foundation, FormBuilder::Themes::Materialize, FormBuilder::Themes::Milligram, FormBuilder::Themes::SemanticUIInline, FormBuilder::Themes::SemanticUIVertical]
 
       FormBuilder::Themes.classes.should eq(classes)
 
-      expected = ["bootstrap_2_horizontal", "bootstrap_2_inline", "bootstrap_2_vertical", "bootstrap_3_horizontal", "bootstrap_3_inline", "bootstrap_3_vertical", "bootstrap_4_horizontal", "bootstrap_4_inline", "bootstrap_4_vertical", "bulma_horizontal", "bulma_vertical", "default", "foundation", "materialize", "milligram", "semantic_ui_inline", "semantic_ui_vertical"]
+      expected = ["bootstrap_2_horizontal", "bootstrap_2_inline", "bootstrap_2_vertical", "bootstrap_3_horizontal", "bootstrap_3_inline", "bootstrap_3_vertical", "bootstrap_4_horizontal", "bootstrap_4_inline", "bootstrap_4_vertical", "bootstrap_5_horizontal", "bootstrap_5_inline", "bootstrap_5_vertical", "bulma_horizontal", "bulma_vertical", "default", "foundation", "materialize", "milligram", "semantic_ui_inline", "semantic_ui_vertical"]
 
       classes.map{|x| x.theme_name}.should eq(expected)
     end
