@@ -292,7 +292,7 @@ crystal spec
 
 # Ruby Alternative
 
-This library has been ported to the Ruby language as [SexyForm.rb](https://github.com/westonganger/sexy_form.rb)
+This library has been ported to the Ruby language as [FormBuilder.rb](https://github.com/westonganger/sexy_form.rb)
 
 The pattern/implementation of this form builder library turned out so beautifully that I felt the desire to have the same syntax available in the Ruby language. Many Crystal developers also write Ruby and vice versa so this only made sense. What was awesome is that, the Crystal and Ruby syntax is so similar that converting Crystal code to Ruby was straight forward and quite simple.
 
